@@ -49,7 +49,7 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                   hoveredId === project.id ? 'opacity-100' : 'opacity-0'
                 }`}>
                   <a 
-                    href={project.link || '#'} 
+                    href={"Under_work.html"} 
                     className="p-2 bg-white rounded-full hover:bg-gray-100 transition-colors"
                     aria-label="View project"
                   >
