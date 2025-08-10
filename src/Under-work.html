@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under Construction</title>
+    <style>
+        :root {
+            --primary-color: #f8f9fa;
+            --secondary-color: #e9ecef;
+            --accent-color: #ff6b6b;
+            --dark-color: #343a40;
+            --light-color: #212529;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--dark-color);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .construction-container {
+            text-align: center;
+            z-index: 10;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, var(--dark-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .construction-icon {
+            margin: 2rem auto;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+
+        .construction-icon .barricade {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .construction-icon .bar {
+            height: 15px;
+            width: 120px;
+            background-color: var(--accent-color);
+            margin: 5px 0;
+            transform: rotate(-5deg);
+            border-radius: 3px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .construction-icon .sign {
+            width: 100px;
+            height: 50px;
+            background-color: var(--dark-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            transform: rotate(3deg);
+            position: absolute;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .construction-icon .sign span {
+            font-weight: bold;
+            font-size: 1.8rem;
+            color: var(--accent-color);
+        }
+
+        /* Bubble styles */
+        .bg-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .bg-elements div {
+            position: absolute;
+            border-radius: 50%;
+            will-change: transform;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .construction-icon {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-elements" id="animated-bg"></div>
+
+    <div class="construction-container">
+        <h1>Website is under construction</h1>
+        <p>We're working hard to bring you an amazing experience. Our site will be launching soon with new features and content.</p>
+        
+        <div class="construction-icon">
+            <div class="barricade">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="sign">
+                    <span>!</span>
+                </div>
+            </div>
+        </div>
+
+        <p>In the meantime, feel free to reach out if you have any questions or need assistance.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bubbleContainer = document.getElementById('animated-bg');
+            const colors = ['#ff6b6b55', '#48c6ef55', '#6a11cb55', '#fbc2eb55', '#a6c1ee55'];
+
+            // Watery pop sound with layered oscillators & echo
+            function playWateryPop() {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+
+                // Low thump
+                const oscLow = ctx.createOscillator();
+                const gainLow = ctx.createGain();
+                oscLow.type = 'sine';
+                oscLow.frequency.setValueAtTime(150, ctx.currentTime);
+                gainLow.gain.setValueAtTime(0.25, ctx.currentTime);
+                oscLow.frequency.exponentialRampToValueAtTime(50, ctx.currentTime + 0.25);
+                gainLow.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+                oscLow.connect(gainLow);
+
+                // High blip
+                const oscHigh = ctx.createOscillator();
+                const gainHigh = ctx.createGain();
+                oscHigh.type = 'triangle';
+                oscHigh.frequency.setValueAtTime(400 + Math.random() * 300, ctx.currentTime);
+                gainHigh.gain.setValueAtTime(0.15, ctx.currentTime);
+                oscHigh.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.2);
+                gainHigh.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
+                oscHigh.connect(gainHigh);
+
+                // Delay for watery echo
+                const delay = ctx.createDelay();
+                delay.delayTime.setValueAtTime(0.05, ctx.currentTime);
+                const delayGain = ctx.createGain();
+                delayGain.gain.setValueAtTime(0.1, ctx.currentTime);
+
+                gainLow.connect(ctx.destination);
+                gainHigh.connect(ctx.destination);
+
+                // Route echo
+                gainLow.connect(delay);
+                gainHigh.connect(delay);
+                delay.connect(delayGain);
+                delayGain.connect(ctx.destination);
+
+                oscLow.start();
+                oscHigh.start();
+                oscLow.stop(ctx.currentTime + 0.25);
+                oscHigh.stop(ctx.currentTime + 0.2);
+            }
+
+            function createBubble() {
+                const bubble = document.createElement('div');
+                const size = Math.random() * 60 + 30;
+                const posX = Math.random() * window.innerWidth;
+                const posY = Math.random() * window.innerHeight;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const duration = Math.random() * 15 + 5;
+                
+                bubble.style.position = 'absolute';
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.left = `${posX}px`;
+                bubble.style.top = `${posY}px`;
+                bubble.style.backgroundColor = color;
+                bubble.style.borderRadius = '50%';
+                bubble.style.cursor = 'pointer';
+                bubble.style.transition = 'transform 0.2s ease';
+                bubble.style.pointerEvents = 'auto';
+                
+                bubble.addEventListener('mouseover', () => {
+                    bubble.style.transform = 'scale(1.1)';
+                });
+                
+                bubble.addEventListener('mouseout', () => {
+                    bubble.style.transform = 'scale(1)';
+                });
+                
+                bubble.addEventListener('click', () => {
+                    playWateryPop();
+                    bubble.style.transition = 'all 0.3s ease';
+                    bubble.style.transform = 'scale(1.5)';
+                    bubble.style.opacity = '0';
+                    setTimeout(() => {
+                        bubble.remove();
+                        createBubble();
+                    }, 300);
+                });
+                
+                bubble.animate([
+                    { transform: 'translateY(0) scale(1)' },
+                    { transform: `translateY(-${Math.random() * 200 + 50}px) scale(${Math.random() * 0.2 + 0.9})` }
+                ], {
+                    duration: duration * 1000,
+                    iterations: Infinity,
+                    direction: 'alternate',
+                    easing: 'ease-in-out'
+                });
+                
+                bubbleContainer.appendChild(bubble);
+            }
+            
+            for (let i = 0; i < 15; i++) {
+                createBubble();
+            }
+        });
+    </script>
+</body>
+</html>
