@@ -48,13 +48,14 @@ const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
                 <div className={`absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center gap-4 transition-opacity duration-300 ${
                   hoveredId === project.id ? 'opacity-100' : 'opacity-0'
                 }`}>
-                  <a 
-                    href={"Under-work.html"} 
-                    className="p-2 bg-white rounded-full hover:bg-gray-100 transition-colors"
-                    aria-label="View project"
-                  >
-                    <ExternalLink size={20} className="text-black" />
-                  </a>
+                  <a href="/Under_work.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 bg-white rounded-full hover:bg-gray-100 transition-colors"
+                      aria-label="View project"
+>
+  <ExternalLink size={20} className="text-black" />
+</a>
                   <a 
                     href="#" 
                     className="p-2 bg-white rounded-full hover:bg-gray-100 transition-colors"
